@@ -27,4 +27,13 @@ if (isNaN(ChilometriDaPercorrere)) {
     )
   );
   console.log(Eta);
+  if (isNaN(Eta)) {
+    alert(
+      "QUALCOSA E' ANDATO STORTO\n\nForse non hai inserito dei numeri.\nProva a ricaricare la pagina e tentare di nuovo l'acquisto"
+    );
+  }
 }
+
+// Calcolare TicketItero -> ChilometriDaPercorrere * CostoXkm;
+let TicketItero = ChilometriDaPercorrere * CostoXkm;
+console.log(TicketItero + " €");

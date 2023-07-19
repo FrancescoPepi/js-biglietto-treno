@@ -51,3 +51,5 @@ if (EtaUtente < Minorenne) {
   TicketItero = TicketItero - (TicketItero * 40) / 100;
   console.log(TicketItero);
 }
+
+document.getElementById("ticket").innerHTML = TicketItero.toFixed(2) + " €";

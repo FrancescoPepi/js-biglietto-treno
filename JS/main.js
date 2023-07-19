@@ -56,9 +56,9 @@ if (EtaUtente < Minorenne) {
 }
 //  Stampa su schermo il biglietto.
 document.getElementById("km").innerHTML =
-  "Kilometri da fare : " + ChilometriDaPercorrere + " Km;";
-document.getElementById("age").innerHTML = "Età : " + EtaUtente + " Anni;";
+  "Kilometri da fare : " + ChilometriDaPercorrere + " Km";
+document.getElementById("age").innerHTML = "Età : " + EtaUtente + " Anni";
 document.getElementById("discount").innerHTML =
-  "Sconto applicato : " + Discount + " %;";
+  "Sconto applicato : " + Discount + " %";
 document.getElementById("price").innerHTML =
   "Prezzo del Ticket : " + TicketItero.toFixed(2) + " €";

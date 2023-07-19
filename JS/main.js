@@ -2,6 +2,7 @@
 const CostoXkm = 0.21;
 const Minorenne = 18;
 const Over = 65;
+let EtaUtente = 0;
 
 // Chiedere all'utente ChilometriDaPercorrere
 const ChilometriDaPercorrere = parseInt(
@@ -17,7 +18,8 @@ if (isNaN(ChilometriDaPercorrere)) {
     "QUALCOSA E' ANDATO STORTO\n\nForse non hai inserito dei numeri.\nProva a ricaricare la pagina e tentare di nuovo l'acquisto"
   );
 } else {
-  const Eta = parseInt(
+  // Chiedere all'utente Eta
+  let Eta = parseInt(
     prompt(
       `
         Kilometri da percorrere : ${ChilometriDaPercorrere}
@@ -31,9 +33,21 @@ if (isNaN(ChilometriDaPercorrere)) {
     alert(
       "QUALCOSA E' ANDATO STORTO\n\nForse non hai inserito dei numeri.\nProva a ricaricare la pagina e tentare di nuovo l'acquisto"
     );
+  } else {
+    EtaUtente = Eta;
+    console.log(EtaUtente);
   }
 }
 
 // Calcolare TicketItero -> ChilometriDaPercorrere * CostoXkm;
 let TicketItero = ChilometriDaPercorrere * CostoXkm;
 console.log(TicketItero + " €");
+
+// Calcolo sconto
+if (EtaUtente < Minorenne) {
+  TicketItero = TicketItero - (TicketItero * 20) / 100;
+  console.log(TicketItero);
+} else if (EtaUtente > Over) {
+  TicketItero = TicketItero - (TicketItero * 40) / 100;
+  console.log(TicketItero);
+}

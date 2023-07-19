@@ -3,6 +3,7 @@ const CostoXkm = 0.21;
 const Minorenne = 18;
 const Over = 65;
 let EtaUtente = 0;
+let Discount = 0;
 
 // Chiedere all'utente ChilometriDaPercorrere
 const ChilometriDaPercorrere = parseInt(
@@ -46,10 +47,18 @@ console.log(TicketItero + " €");
 // Calcolo sconto
 if (EtaUtente < Minorenne) {
   TicketItero = TicketItero - (TicketItero * 20) / 100;
+  Discount = 20;
   console.log(TicketItero);
 } else if (EtaUtente > Over) {
   TicketItero = TicketItero - (TicketItero * 40) / 100;
+  Discount = 40;
   console.log(TicketItero);
 }
-
-document.getElementById("ticket").innerHTML = TicketItero.toFixed(2) + " €";
+//  Stampa su schermo il biglietto.
+document.getElementById("km").innerHTML =
+  "Kilometri da fare : " + ChilometriDaPercorrere + " Km;";
+document.getElementById("age").innerHTML = "Età : " + EtaUtente + " Anni;";
+document.getElementById("discount").innerHTML =
+  "Sconto applicato : " + Discount + " %;";
+document.getElementById("price").innerHTML =
+  "Prezzo del Ticket : " + TicketItero.toFixed(2) + " €";

@@ -2,8 +2,9 @@
 const CostoXkm = 0.21;
 const Minorenne = 18;
 const Over = 65;
-let EtaUtente = 0;
+let Eta = 0;
 let Discount = 0;
+let TicketDiscount = 0;
 
 // Chiedere all'utente ChilometriDaPercorrere
 const ChilometriDaPercorrere = parseInt(
@@ -20,7 +21,7 @@ if (isNaN(ChilometriDaPercorrere)) {
   );
 } else {
   // Chiedere all'utente Eta
-  let Eta = parseInt(
+  Eta = parseInt(
     prompt(
       `
         Kilometri da percorrere : ${ChilometriDaPercorrere}
@@ -34,31 +35,38 @@ if (isNaN(ChilometriDaPercorrere)) {
     alert(
       "QUALCOSA E' ANDATO STORTO\n\nForse non hai inserito dei numeri.\nProva a ricaricare la pagina e tentare di nuovo l'acquisto"
     );
-  } else {
-    EtaUtente = Eta;
-    console.log(EtaUtente);
   }
 }
 
-// Calcolare TicketItero -> ChilometriDaPercorrere * CostoXkm;
-let TicketItero = ChilometriDaPercorrere * CostoXkm;
-console.log(TicketItero + " €");
+// Calcolare TicketIntero -> ChilometriDaPercorrere * CostoXkm;
+let TicketIntero = ChilometriDaPercorrere * CostoXkm;
+console.log(TicketIntero + " €");
 
 // Calcolo sconto
-if (EtaUtente < Minorenne) {
-  TicketItero = TicketItero - (TicketItero * 20) / 100;
+if (Eta < Minorenne) {
+  TicketDiscount = TicketIntero - (TicketIntero * 20) / 100;
   Discount = 20;
-  console.log(TicketItero);
-} else if (EtaUtente > Over) {
-  TicketItero = TicketItero - (TicketItero * 40) / 100;
+  console.log(TicketDiscount);
+} else if (Eta > Over) {
+  TicketDiscount = TicketIntero - (TicketIntero * 40) / 100;
   Discount = 40;
-  console.log(TicketItero);
+  console.log(TicketDiscount);
 }
-//  Stampa su schermo il biglietto.
-document.getElementById("km").innerHTML =
-  "Kilometri da fare : " + ChilometriDaPercorrere + " Km";
-document.getElementById("age").innerHTML = "Età : " + EtaUtente + " Anni";
-document.getElementById("discount").innerHTML =
-  "Sconto applicato : " + Discount + " %";
-document.getElementById("price").innerHTML =
-  "Prezzo del Ticket : " + TicketItero.toFixed(2) + " €";
+
+if (isNaN(ChilometriDaPercorrere) || TicketIntero || Eta || TicketDiscount) {
+  document.getElementById("message").innerHTML = "Compra il tuo Biglietto";
+  alert(
+    "QUALCOSA E' ANDATO STORTO\n\nForse non hai inserito dei numeri.\nProva a ricaricare la pagina e tentare di nuovo l'acquisto"
+  );
+} else {
+  //  Stampa su schermo il biglietto.
+  document.getElementById("km").innerHTML =
+    "Kilometri da fare : " + ChilometriDaPercorrere + " Km";
+  document.getElementById("age").innerHTML = "Età : " + Eta + " Anni";
+  document.getElementById("discount").innerHTML =
+    "Sconto applicato : " + Discount + " %";
+  document.getElementById("price-discount").innerHTML =
+    "Prezzo del Ticket intero è di : " + TicketIntero.toFixed(2) + " €";
+  document.getElementById("price").innerHTML =
+    "Prezzo del Ticket scontato è di : " + TicketDiscount.toFixed(2) + " €";
+}
